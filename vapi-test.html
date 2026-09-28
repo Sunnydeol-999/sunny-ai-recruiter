@@ -4,56 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sunny Vapi Test</title>
-
-    <script src="https://unpkg.com/@vapi-ai/web/dist/vapi.js"></script>
 </head>
 
 <body>
 
     <h1>🎙️ Sunny Vapi Test</h1>
 
-    <button id="startButton" type="button">
-        Start Conversation
-    </button>
+    <p>Click the button below to start Sunny.</p>
 
-    <p id="status">Ready</p>
+    <div id="vapi-button"></div>
 
     <script>
 
-        const publicKey =
-            "b27091e2-1278-4e15-a98e-36548eff9dcc";
+        var vapiInstance = null;
 
-        const assistantId =
-            "234beb2e-9f28-46eb-958b-c021f3771d34";
+        const assistant = "234beb2e-9f28-46eb-958b-c021f3771d34";
 
-        const vapi = new Vapi(publicKey);
+        const apiKey = "b27091e2-1278-4e15-a98e-36548eff9dcc";
 
-        const button = document.getElementById("startButton");
-        const status = document.getElementById("status");
-
-        button.addEventListener("click", async function () {
-
-            status.innerText = "Connecting to Sunny...";
-
-            try {
-
-                await vapi.start(assistantId);
-
-                status.innerText =
-                    "🟢 Call started";
-
-            } catch (error) {
-
-                console.error("VAPI ERROR:", error);
-
-                status.innerText =
-                    "❌ Vapi connection failed";
-
+        const buttonConfig = {
+            position: "bottom-right",
+            offset: "40px",
+            width: "50px",
+            height: "50px",
+            idle: {
+                color: "#000000",
+                type: "pill",
+                title: "Talk to Sunny",
+                subtitle: "Click to talk",
+                icon: "https://unpkg.com/lucide-static@0.468.0/icons/mic.svg"
+            },
+            loading: {
+                color: "#000000",
+                type: "pill",
+                title: "Connecting...",
+                subtitle: "Please wait",
+                icon: "https://unpkg.com/lucide-static@0.468.0/icons/loader-2.svg"
+            },
+            active: {
+                color: "#000000",
+                type: "pill",
+                title: "Sunny is listening",
+                subtitle: "Click to end",
+                icon: "https://unpkg.com/lucide-static@0.468.0/icons/phone-off.svg"
             }
+        };
 
-        });
+        (function (d, t) {
+
+            var g = d.createElement(t);
+            var s = d.getElementsByTagName(t)[0];
+
+            g.src =
+                "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+
+            g.defer = true;
+            g.async = true;
+
+            s.parentNode.insertBefore(g, s);
+
+            g.onload = function () {
+
+                vapiInstance = window.vapiSDK.run({
+                    apiKey: apiKey,
+                    assistant: assistant,
+                    config: buttonConfig
+                });
+
+            };
+
+        })(document, "script");
 
     </script>
 
