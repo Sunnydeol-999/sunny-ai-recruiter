@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sunny Vapi Test</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.js"></script>
+</head>
+
+<body>
+
+    <h1>🎙️ Sunny Vapi Test</h1>
+
+    <button id="startButton" type="button">
+        Start Conversation
+    </button>
+
+    <p id="status">Ready</p>
+
+    <script>
+
+        const publicKey =
+            "b27091e2-1278-4e15-a98e-36548eff9dcc";
+
+        const assistantId =
+            "234beb2e-9f28-46eb-958b-c021f3771d34";
+
+        const vapi = new Vapi(publicKey);
+
+        const button = document.getElementById("startButton");
+        const status = document.getElementById("status");
+
+        button.addEventListener("click", async function () {
+
+            status.innerText = "Connecting to Sunny...";
+
+            try {
+
+                await vapi.start(assistantId);
+
+                status.innerText =
+                    "🟢 Call started";
+
+            } catch (error) {
+
+                console.error("VAPI ERROR:", error);
+
+                status.innerText =
+                    "❌ Vapi connection failed";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
