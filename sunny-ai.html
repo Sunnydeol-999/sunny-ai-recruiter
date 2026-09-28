@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sunny AI Recruiter</title>
+
+    <script
+        src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+        async
+        type="text/javascript">
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 650px;
+            padding: 50px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .instructions {
+            text-align: left;
+            background: #f8f9fc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            margin-top: 0;
+        }
+
+        .instructions li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Sunny AI Recruiter</h1>
+
+    <div class="subtitle">
+        Your AI recruitment assistant for sourcing,
+        screening, technology understanding and hiring support.
+    </div>
+
+    <div class="instructions">
+
+        <h3>What can I ask Sunny?</h3>
+
+        <ul>
+            <li>Explain this JD to me</li>
+            <li>What does this role do day-to-day?</li>
+            <li>Give me Naukri Boolean strings</li>
+            <li>Screen this candidate</li>
+            <li>Explain this technology</li>
+            <li>Give me interview questions</li>
+            <li>Help me handle a candidate</li>
+            <li>Help me communicate with the hiring manager</li>
+        </ul>
+
+    </div>
+
+    <h3>🎙️ Talk to Sunny</h3>
+
+    <vapi-widget
+        public-key="64eeef50-ec4f-47d4-a855-95f852e9aeb6"
+        assistant-id="234beb2e-9f28-46eb-958b-c021f3771d34"
+        mode="voice"
+        theme="light"
+        size="compact"
+        position="bottom-right"
+        main-label="Talk to Sunny"
+        start-button-text="Start Conversation"
+        end-button-text="End Call"
+        empty-voice-message="Click to start a conversation with Sunny"
+        show-transcript="true">
+    </vapi-widget>
+
+</div>
+
+</body>
+</html>
